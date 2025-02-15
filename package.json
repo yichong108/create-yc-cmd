@@ -1,0 +1,33 @@
+{
+  "name": "create-yc-cmd",
+  "private": false,
+  "version": "1.0.1",
+  "author": "WishZhang",
+  "description": "A command-line tool commonly used in development",
+  "license": "MIT",
+  "scripts": {
+    "test": "vitest",
+    "build": "vite build",
+    "format": "prettier --write \"lib/**/*.js\""
+  },
+  "bin": {
+    "create-yc-cmd": "./dist/main.js"
+  },
+  "type": "module",
+  "repository": "https://github.com/yichong108/create-yc-cmd",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "devDependencies": {
+    "prettier": "^3.5.1",
+    "vite": "^6.0.1",
+    "vite-plugin-node": "^4.0.0",
+    "vite-plugin-top-level-await": "^1.5.0",
+    "vitest": "^3.0.5"
+  },
+  "dependencies": {
+    "@inquirer/prompts": "^7.3.1",
+    "chalk": "^5.4.1"
+  }
+}
