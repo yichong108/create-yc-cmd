@@ -1,6 +1,6 @@
-import { execSync } from 'child_process'
+import { execSync } from 'node:child_process'
 
-function releasePort(portInput) {
+function releasePort(portInput: any) {
   try {
     const port = Number(portInput)
 
@@ -26,7 +26,7 @@ function releasePort(portInput) {
     killProcesses(pids)
 
     // 检查进程是否被成功终止
-    const allKilled = pids.every((pid) => !isProcessActive(pid))
+    const allKilled = pids.every((pid: number) => !isProcessActive(pid))
     return allKilled
   } catch (error) {
     console.error(error)

@@ -1,5 +1,4 @@
-// releasePort.test.js
-import { describe, it, expect, beforeEach, vi } from 'vitest'
+import { describe, it, expect, beforeEach, vi, Mock } from 'vitest'
 import releasePort from '../features/releasePort.js'
 import { execSync } from 'child_process'
 
@@ -19,13 +18,13 @@ describe('releasePort', () => {
   })
 
   it('should return false if unable to get PIDs', () => {
-    execSync.mockReturnValueOnce('')
+    vi.mocked(execSync).mockReturnValueOnce('')
     expect(releasePort(3000)).toBe(true)
   })
 
   it('should return true if processes are killed successfully', () => {
-    execSync.mockReturnValueOnce('1234\n5678\n')
-    execSync.mockImplementation((command) => {
+    vi.mocked(execSync).mockReturnValueOnce('1234\n5678\n')
+    vi.mocked(execSync).mockImplementation((command) => {
       if (command.includes('taskkill')) {
         return
       }
@@ -36,7 +35,7 @@ describe('releasePort', () => {
   })
 
   it('should handle errors gracefully', () => {
-    execSync.mockImplementation(() => {
+    vi.mocked(execSync).mockImplementation(() => {
       throw new Error('Command failed')
     })
 
