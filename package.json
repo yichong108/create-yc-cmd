@@ -6,6 +6,7 @@
   "description": "A command-line tool commonly used in development",
   "license": "MIT",
   "scripts": {
+    "dev": "tsc && npm run build && node dist/main.js",
     "test": "tsc && vitest",
     "build": "tsc && vite build",
     "format": "prettier --write \"lib/**/*.ts\"",
