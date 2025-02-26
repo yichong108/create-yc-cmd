@@ -3,32 +3,7 @@ import chalk from 'chalk'
 import releasePort from './features/releasePort.js'
 import proxySetting from './features/proxySetting.js'
 
-/**
- * https://www.npmjs.com/package/@inquirer/prompts
- */
-
-const tmp1Map = {
-  port: 'port',
-  proxy: 'proxy',
-}
-
-const answer = await select({
-  message: 'Please select a feature',
-  choices: [
-    {
-      name: 'Free Port',
-      value: tmp1Map.port,
-      description: '',
-    },
-    {
-      name: 'Proxy Setting',
-      value: tmp1Map.proxy,
-      description: '',
-    },
-  ],
-})
-
-if (answer === tmp1Map.port) {
+async function handlePort() {
   try {
     const port = await input({ message: 'Please enter the port number:' })
     const res = releasePort(port)
@@ -41,57 +16,51 @@ if (answer === tmp1Map.port) {
     console.error('Failed to release port')
     console.error(error)
   }
-} else if (answer === tmp1Map.proxy) {
-  const tmp2Map = {
-    git: 'git',
-    npm: 'npm',
-  }
-  const tmp2 = await select({
-    message: 'Please select a proxy type',
-    choices: [
-      {
-        name: 'Git',
-        value: tmp2Map.git,
-        description: '',
-      },
-      {
-        name: 'NPM',
-        value: tmp2Map.npm,
-        description: '',
-      },
-    ],
-  })
-  if (tmp2 === tmp2Map.git) {
-    const tmp3Map = {
-      viewProxy: 'view proxy',
-      addProxy: 'add proxy',
-      removeProxy: 'remove proxy',
-    }
-    const tmp3 = await select({
-      message: 'Please select',
-      choices: [
-        {
-          name: 'List proxy',
-          value: tmp3Map.viewProxy,
-        },
-        {
-          name: 'Add proxy',
-          value: tmp3Map.addProxy,
-        },
-        {
-          name: 'Remove proxy',
-          value: tmp3Map.removeProxy,
-        },
-      ],
-    })
-    if (tmp3 === tmp3Map.viewProxy) {
-      proxySetting.listGitProxy()
-    } else if (tmp3 === tmp3Map.addProxy) {
-      proxySetting.addGitProxy()
-    } else if (tmp3 === tmp3Map.removeProxy) {
-      proxySetting.removeGitProxy()
-    }
-  } else if (tmp2 === tmp2Map.npm) {
-    console.log('npm')
-  }
 }
+
+async function handleGitProxy() {
+  return select({
+    message: 'Please select',
+    choices: [
+      { name: 'List proxy', value: 'view' },
+      { name: 'Add proxy', value: 'add' },
+      { name: 'Remove proxy', value: 'remove' }
+    ]
+  }).then(action => {
+    if (action === 'view') {
+      return proxySetting.listGitProxy()
+    } else if (action === 'add') {
+      return proxySetting.addGitProxy()
+    } else if (action === 'remove') {
+      return proxySetting.removeGitProxy()
+    }
+  })
+}
+
+select({
+  message: 'Please select a feature',
+  choices: [
+    { name: 'Free Port', value: 'port' },
+    { name: 'Proxy Setting', value: 'proxy' }
+  ]
+})
+.then(feature => {
+  if (feature === 'port') {
+    return handlePort()
+  } else if (feature === 'proxy') {
+    return select({
+      message: 'Please select a proxy type',
+      choices: [
+        { name: 'Git', value: 'git' },
+        { name: 'NPM', value: 'npm' }
+      ]
+    }).then(type => {
+      if (type === 'git') {
+        return handleGitProxy()
+      } else {
+        console.log('NPM proxy configuration is not implemented yet')
+      }
+    })
+  }
+})
+.catch(console.error)
