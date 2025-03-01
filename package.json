@@ -10,7 +10,10 @@
     "test": "tsc && vitest",
     "build": "tsc && vite build",
     "format": "prettier --write \"lib/**/*.ts\"",
-    "tsc": "tsc --noEmit"
+    "tsc": "tsc --noEmit",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "bin": {
     "create-yc-cmd": "./dist/main.js"
@@ -28,6 +31,7 @@
     "vite": "^6.0.1",
     "vite-plugin-node": "^4.0.0",
     "vite-plugin-top-level-await": "^1.5.0",
+    "vitepress": "^1.6.3",
     "vitest": "^3.0.5"
   },
   "dependencies": {

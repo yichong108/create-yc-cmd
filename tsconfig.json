@@ -14,6 +14,6 @@
     },
     "noEmit": true  // 添加此行以禁止生成 JavaScript 文件
   },
-  "include": ["lib"],
+  "include": ["lib", "docs"],
   "exclude": ["node_modules", "dist"]
 }
