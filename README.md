@@ -1,18 +1,18 @@
 # create-yc-cmd
 
-一个在开发过程中常用的命令行工具集合，旨在简化开发流程，提高工作效率。
+A collection of command-line tools commonly used in development, designed to simplify development processes and improve work efficiency.
 
-## 功能
+## Features
 
-- 端口释放：快速释放被占用的端口
-- 代理设置：轻松配置 Git 和 NPM 的代理设置
+- Port Release: Quickly release occupied ports
+- Proxy Settings: Easily configure Git and NPM proxy settings
 
-## 系统要求
+## System Requirements
 
-- Windows 操作系统
-- Node.js 14.0.0 或更高版本
+- Windows Operating System
+- Node.js 14.0.0 or higher
 
-## 安装
+## Installation
 
 ```bash
 npm install -g create-yc-cmd
