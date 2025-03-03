@@ -32,12 +32,8 @@ function listGitProxy() {
     
     if (httpResult || httpsResult) {
       console.log('Current Git proxy settings:');
-      if (httpResult) {
-        console.log(chalk.green(httpResult));
-      }
-      if (httpsResult) {
-        console.warn(chalk.green(httpsResult));
-      }
+      console.log(chalk.green(httpResult));
+      console.log(chalk.green(httpsResult));
     } else {
       console.warn('No Git proxy settings found');
     }

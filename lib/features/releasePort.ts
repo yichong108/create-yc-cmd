@@ -26,8 +26,7 @@ function releasePort(portInput: any) {
     killProcesses(pids)
 
     // 检查进程是否被成功终止
-    const allKilled = pids.every((pid: number) => !isProcessActive(pid))
-    return allKilled
+    return pids.every((pid: number) => !isProcessActive(pid))
   } catch (error) {
     console.error(error)
     return false

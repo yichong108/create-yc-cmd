@@ -1,7 +1,8 @@
 import { select, input } from '@inquirer/prompts'
 import chalk from 'chalk'
 import releasePort from './features/releasePort.js'
-import proxySetting from './features/proxySetting.js'
+import proxySetting from './features/gitProxy.js'
+import npmProxy from './features/npmProxy.js'
 
 async function handlePort() {
   try {
@@ -37,6 +38,25 @@ async function handleGitProxy() {
   })
 }
 
+async function handleNpmProxy() {
+  return select({
+    message: 'Please select',
+    choices: [
+      { name: 'List proxy', value: 'view' },
+      { name: 'Add proxy', value: 'add' },
+      { name: 'Remove proxy', value: 'remove' }
+    ]
+  }).then(action => {
+    if (action === 'view') {
+      return npmProxy.listNpmProxy()
+    } else if (action === 'add') {
+      return npmProxy.addNpmProxy()
+    } else if (action === 'remove') {
+      return npmProxy.removeNpmProxy()
+    }
+  })
+}
+
 select({
   message: 'Please select a feature',
   choices: [
@@ -57,8 +77,8 @@ select({
     }).then(type => {
       if (type === 'git') {
         return handleGitProxy()
-      } else {
-        console.log('NPM proxy configuration is not implemented yet')
+      } else if (type === 'npm') {
+        return handleNpmProxy()
       }
     })
   }
