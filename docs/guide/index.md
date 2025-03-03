@@ -1,14 +1,14 @@
-# 介绍
+# Introduction
 
-`create-yc-cmd` 是一个在开发过程中常用的命令行工具集合，旨在简化开发流程，提高工作效率。
+`create-yc-cmd` is a collection of command-line tools commonly used in development, designed to simplify development processes and improve work efficiency.
 
-## 特点
+## Features
 
-- **简单易用**：交互式命令行界面，操作简单直观
-- **功能实用**：集成了开发中常用的功能
-- **可扩展**：易于添加新功能
+- **Easy to Use**: Interactive command-line interface with simple and intuitive operations
+- **Practical Functions**: Integration of commonly used development features
+- **Extensible**: Easy to add new features
 
-## 系统要求
+## System Requirements
 
-- Windows 操作系统
-- Node.js 14.0.0 或更高版本
+- Windows Operating System
+- Node.js 14.0.0 or higher

@@ -1,8 +1,6 @@
-# 安装
+# Installation
 
-## 通过 npm 安装
-
-您可以使用 npm 全局安装 create-yc-cmd：
+To install create-yc-cmd globally, run:
 
 ```bash
 npm install -g create-yc-cmd

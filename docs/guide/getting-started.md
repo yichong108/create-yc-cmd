@@ -1,6 +1,6 @@
-# 快速开始
+# Getting Started
 
-## 安装
+## Installation
 
 ```bash
 npm install -g create-yc-cmd

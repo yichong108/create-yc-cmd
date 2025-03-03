@@ -1,8 +1,3 @@
-# 代理设置
+# Proxy Settings
 
-yc-cmd 提供了简单的代理配置功能，支持 Git 和 NPM 代理设置。
-
-## Git 代理
-
-```bash
-yc-cmd proxy git
+create-yc-cmd provides simple proxy configuration features, supporting both Git and NPM proxy settings.
