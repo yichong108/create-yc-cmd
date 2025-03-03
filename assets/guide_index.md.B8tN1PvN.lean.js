@@ -1,1 +1,0 @@
-import{_ as a,c as t,o as i,ae as r}from"./chunks/framework.BPU2bBgi.js";const h=JSON.parse('{"title":"介绍","description":"","frontmatter":{},"headers":[],"relativePath":"guide/index.md","filePath":"guide/index.md"}'),o={name:"guide/index.md"};function n(l,e,d,s,c,_){return i(),t("div",null,e[0]||(e[0]=[r("",6)]))}const m=a(o,[["render",n]]);export{h as __pageData,m as default};
