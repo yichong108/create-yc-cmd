@@ -1,7 +1,7 @@
 {
   "name": "create-yc-cmd",
   "private": false,
-  "version": "1.1.0",
+  "version": "1.2.0",
   "author": "WishZhang",
   "homepage": "https://yichong108.github.io/create-yc-cmd",
   "description": "A command-line tool commonly used in development",
